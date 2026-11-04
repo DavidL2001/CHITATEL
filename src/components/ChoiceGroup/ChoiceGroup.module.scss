@@ -1,0 +1,83 @@
+@use 'styles/tools' as *;
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  padding: 0;
+  margin-bottom: $space-2;
+  font-weight: $font-weight-medium;
+}
+
+.hint {
+  @include muted-text;
+}
+
+.options {
+  display: grid;
+  gap: $space-2;
+}
+
+.row {
+  grid-template-columns: repeat(auto-fit, minmax($choice-min-width, 1fr));
+}
+
+.column {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.option {
+  @include tap-target;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  border: $border-width solid var(--color-border);
+  border-radius: $radius-md;
+  background: var(--color-surface);
+  cursor: pointer;
+
+  &:has(.radio:checked) {
+    border-color: var(--color-accent);
+    border-width: $border-width-strong;
+    background: var(--color-surface-raised);
+  }
+
+  &:has(.radio:focus-visible) {
+    @include focus-ring;
+  }
+}
+
+.radio {
+  flex-shrink: 0;
+  width: $space-5;
+  height: $space-5;
+  margin: 0;
+  accent-color: var(--color-accent);
+
+  // The whole card shows the focus ring instead.
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.optionLabel {
+  font-weight: $font-weight-medium;
+}
+
+.description {
+  @include muted-text;
+}

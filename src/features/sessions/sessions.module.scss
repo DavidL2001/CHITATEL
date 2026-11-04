@@ -1,0 +1,129 @@
+@use 'styles/tools' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.fullForm {
+  display: flex;
+  width: 100%;
+}
+
+.muted {
+  @include muted-text;
+}
+
+.pageRange {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.pageFields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-4;
+
+  @include mq(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.pagesRead {
+  padding: $space-3 $space-4;
+  border-radius: $radius-md;
+  background: var(--color-surface-raised);
+}
+
+// Active session
+.sessionCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-3;
+  text-align: center;
+
+  @include landscape-phone {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    text-align: start;
+  }
+}
+
+.sessionBook {
+  min-width: 0;
+}
+
+.sessionTitle {
+  @include truncate(3);
+  font-size: $font-size-xl;
+}
+
+.timer {
+  font-family: $font-heading;
+  font-size: $font-size-timer;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.timerState {
+  @include muted-text($font-size-md);
+}
+
+.timerActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $space-3;
+  width: 100%;
+
+  > * {
+    flex: 1 1 $control-min-width;
+  }
+}
+
+// Session list
+.sessionList {
+  @include reset-list;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+// Title and meta beside the actions; the note spans the full width below.
+.sessionItem {
+  @include card-surface;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: $space-2;
+  padding: $space-3 $space-2 $space-3 $space-4;
+}
+
+.sessionMain {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: $space-1;
+  min-width: 0;
+}
+
+.sessionHeading {
+  @include truncate(2);
+  font-family: inherit;
+  font-size: $font-size-md;
+}
+
+.note {
+  grid-column: 1 / -1;
+  padding-right: $space-2;
+  white-space: pre-wrap;
+}
+
+.sessionActions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+}

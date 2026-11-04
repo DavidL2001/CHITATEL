@@ -1,0 +1,108 @@
+@use 'styles/tools' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-4;
+
+  @include mq(lg) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.cardHeading {
+  font-size: $font-size-lg;
+}
+
+.chartCard {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  min-width: 0;
+}
+
+.summary {
+  @include muted-text($font-size-md);
+}
+
+.chart {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: $chart-height;
+}
+
+.details {
+  border-top: $border-width solid var(--color-border-subtle);
+  padding-top: $space-2;
+}
+
+.detailsSummary {
+  @include tap-target;
+  display: flex;
+  align-items: center;
+  color: var(--color-link);
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: $space-2 $space-3;
+    border-bottom: $border-width solid var(--color-border-subtle);
+    text-align: start;
+  }
+
+  thead th {
+    @include muted-text;
+  }
+
+  tbody th {
+    font-weight: $font-weight-regular;
+  }
+}
+
+.numeric {
+  text-align: end !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, $choice-min-width * 1.4), 1fr));
+  gap: $space-3;
+  margin: 0;
+}
+
+.tile {
+  @include card-surface;
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  padding: $space-4;
+}
+
+.tileLabel {
+  @include muted-text;
+}
+
+.tileValue {
+  margin: 0;
+  font-family: $font-heading;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+}
+
+.tileDetail {
+  @include muted-text;
+  margin: 0;
+}

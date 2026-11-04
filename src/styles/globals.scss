@@ -1,0 +1,121 @@
+@use 'themes';
+@use 'tools' as *;
+
+:root {
+  // Runtime copies of tokens that JavaScript (charts) reads.
+  --font-size-xs: #{$font-size-xs};
+  --font-size-sm: #{$font-size-sm};
+  --font-size-md: #{$font-size-md};
+  --bottom-nav-height: #{$bottom-nav-height};
+  --action-bar-height: #{$action-bar-height};
+  // Set to the bottom-nav height by layouts that show the bottom navigation.
+  --nav-offset: 0px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--color-bg);
+
+  // Don't let the page scroll behind an open modal.
+  &:has(dialog[open]) {
+    overflow: hidden;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: $font-body;
+  font-size: $font-size-md;
+  line-height: $line-height-base;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: $font-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+}
+
+h1 {
+  font-size: $font-size-2xl;
+}
+
+h2 {
+  font-size: $font-size-xl;
+}
+
+h3 {
+  font-size: $font-size-lg;
+}
+
+p {
+  margin: 0;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--color-link);
+  text-underline-offset: 0.2em;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+// Headings receive programmatic focus on route change; they don't need a ring for that.
+[tabindex='-1']:focus:not(:focus-visible) {
+  outline: none;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+@include reduced-motion {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

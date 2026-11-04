@@ -1,0 +1,45 @@
+@use 'styles/tools' as *;
+
+.ring {
+  position: relative;
+  flex-shrink: 0;
+  width: $ring-size;
+  height: $ring-size;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.track,
+.value {
+  fill: none;
+  stroke-width: $ring-stroke;
+}
+
+.track {
+  stroke: var(--color-track);
+}
+
+.value {
+  stroke: var(--color-accent);
+  stroke-linecap: round;
+  transition: stroke-dashoffset $duration-slow $easing;
+}
+
+.complete {
+  stroke: var(--color-success);
+}
+
+.center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: $line-height-tight;
+}

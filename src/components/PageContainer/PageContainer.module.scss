@@ -1,0 +1,36 @@
+@use 'styles/tools' as *;
+
+.container {
+  @include safe-area-x(padding, $space-4);
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  width: 100%;
+  max-width: calc(#{$content-max} + #{$space-8});
+  margin-inline: auto;
+  padding-bottom: $space-8;
+}
+
+.wide {
+  @include mq(md) {
+    max-width: calc(#{$content-wide-max} + #{$space-8});
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sm {
+  gap: $space-2;
+}
+
+.md {
+  gap: $space-4;
+}
+
+.lg {
+  gap: $space-6;
+}

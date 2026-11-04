@@ -1,0 +1,45 @@
+@use 'styles/tools' as *;
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding-top: $space-4;
+}
+
+%skeleton {
+  border-radius: $radius-lg;
+  background: var(--color-surface-raised);
+  animation: pulse $duration-slow * 4 ease-in-out infinite;
+}
+
+.skeletonTitle {
+  @extend %skeleton;
+  width: 50%;
+  height: $space-10;
+}
+
+.skeletonBlock {
+  @extend %skeleton;
+  height: $space-16 * 2;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@include reduced-motion {
+  .skeletonTitle,
+  .skeletonBlock {
+    animation: none;
+  }
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding-top: $space-6;
+}

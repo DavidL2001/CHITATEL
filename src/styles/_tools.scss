@@ -1,0 +1,4 @@
+// Everything a component stylesheet needs, without emitting any CSS.
+// Usage: @use 'styles/tools' as *;
+@forward 'variables';
+@forward 'mixins';

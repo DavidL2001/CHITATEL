@@ -1,0 +1,34 @@
+@use 'styles/tools' as *;
+
+.spacer {
+  height: $action-bar-height;
+}
+
+.bar {
+  @include safe-area-x(padding, $space-4);
+  position: fixed;
+  inset-inline: 0;
+  // --nav-offset is the bottom nav's height when the layout shows one, otherwise 0.
+  bottom: var(--nav-offset);
+  z-index: $z-sticky;
+  padding-block: $space-3;
+  border-top: $border-width solid var(--color-border-subtle);
+  background: var(--color-bg);
+
+  // Without a bottom nav the bar itself sits on the home indicator.
+  :global(.no-nav) & {
+    @include safe-area(padding, bottom, $space-3);
+  }
+}
+
+.inner {
+  display: flex;
+  gap: $space-3;
+  max-width: $content-max;
+  margin-inline: auto;
+
+  > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}

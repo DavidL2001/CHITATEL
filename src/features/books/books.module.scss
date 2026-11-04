@@ -1,0 +1,280 @@
+@use 'styles/tools' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-4;
+
+  @include mq(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.formCover {
+  display: flex;
+  align-items: flex-end;
+  gap: $space-3;
+}
+
+.meta {
+  @include muted-text;
+}
+
+.author {
+  @include muted-text;
+  @include truncate;
+}
+
+// Book list
+.list {
+  @include reset-list;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-3;
+}
+
+.card {
+  @include card-surface;
+  position: relative;
+  display: flex;
+  gap: $space-4;
+  min-width: 0;
+  padding: $space-3;
+
+  &:has(.cardLink:hover) {
+    border-color: var(--color-border);
+  }
+
+  &:has(.cardLink:focus-visible) {
+    @include focus-ring;
+  }
+}
+
+.cardBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: $space-1;
+  min-width: 0;
+}
+
+.cardTitle {
+  @include truncate(2);
+  font-size: $font-size-lg;
+}
+
+.cardLink {
+  color: var(--color-text);
+  text-decoration: none;
+
+  // Stretch the link over the whole card for a big tap target.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: $radius-lg;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.stars {
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+}
+
+.starsEmpty {
+  color: var(--color-track);
+}
+
+// Search
+.searchStatus {
+  @include muted-text;
+  min-height: $line-height-base * $font-size-sm;
+  margin-block: $space-2;
+}
+
+.results {
+  @include reset-list;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.result {
+  @include tap-target;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  width: 100%;
+  padding: $space-2;
+  border: $border-width solid var(--color-border-subtle);
+  border-radius: $radius-md;
+  background: var(--color-surface);
+  text-align: start;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-border);
+    background: var(--color-surface-raised);
+  }
+}
+
+.resultCover {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: $cover-sm;
+  aspect-ratio: 2 / 3;
+  border-radius: $radius-sm;
+  background: var(--color-surface-raised);
+}
+
+.resultImage {
+  object-fit: cover;
+}
+
+.resultText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.resultTitle {
+  @include truncate(2);
+  font-weight: $font-weight-bold;
+}
+
+.manual {
+  margin-top: $space-4;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.detailsHeading {
+  font-size: $font-size-xl;
+}
+
+// Book detail
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+
+  > * {
+    flex: 1 1 $control-min-width;
+  }
+}
+
+// Quotes
+.quotes {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: $space-4;
+}
+
+.quoteList {
+  @include reset-list;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.quoteItem {
+  @include card-surface;
+  display: flex;
+  gap: $space-2;
+  padding: $space-4 $space-2 $space-4 $space-4;
+}
+
+.quote {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+.quoteText {
+  margin: 0 0 $space-2;
+  padding-left: $space-3;
+  border-left: $border-width-strong * 2 solid var(--color-accent);
+  font-family: $font-heading;
+  font-style: italic;
+  white-space: pre-wrap;
+}
+
+.quoteActions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+}
+
+// Journal
+.timeline {
+  @include reset-list;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  padding-left: $space-6;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: $space-2;
+    bottom: $space-2;
+    left: $space-2;
+    width: $border-width-strong;
+    background: var(--color-border-subtle);
+  }
+}
+
+.entry {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: $space-1 * 1.5;
+    left: -$space-5;
+    width: $space-3;
+    height: $space-3;
+    border: $border-width-strong solid var(--color-accent);
+    border-radius: $radius-pill;
+    background: var(--color-bg);
+  }
+}
+
+.entryDate {
+  font-family: inherit;
+  font-size: $font-size-md;
+}
+
+.entryNote {
+  margin-top: $space-2;
+  white-space: pre-wrap;
+}

@@ -1,0 +1,60 @@
+@use 'styles/tools' as *;
+
+.count {
+  font-variant-numeric: tabular-nums;
+}
+
+.search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-3;
+  align-items: end;
+
+  @include mq(sm) {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto;
+  }
+}
+
+// Book detail
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-5;
+}
+
+.facts {
+  display: flex;
+  flex: 1 1 $text-min-width;
+  flex-direction: column;
+  gap: $space-3;
+  min-width: 0;
+  margin: 0;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+
+  dt {
+    @include muted-text;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.review {
+  white-space: pre-wrap;
+}
+
+.readActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+
+  > * {
+    flex: 1 1 $control-min-width;
+  }
+}

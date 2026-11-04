@@ -1,0 +1,84 @@
+@use 'styles/tools' as *;
+
+.region {
+  @include safe-area(padding, top, $space-3);
+  @include safe-area-x(padding, $space-3);
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: $z-toast;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  width: 100%;
+  max-width: $toast-max;
+  padding: $space-2 $space-2 $space-2 $space-4;
+  border: $border-width solid var(--color-border);
+  border-left-width: $space-1;
+  border-radius: $radius-md;
+  background: var(--color-surface-raised);
+  box-shadow: $shadow-md;
+  pointer-events: auto;
+  animation: enter $duration-base $easing;
+}
+
+.success {
+  border-left-color: var(--color-success);
+
+  .icon {
+    color: var(--color-success);
+  }
+}
+
+.error {
+  border-left-color: var(--color-danger);
+
+  .icon {
+    color: var(--color-danger);
+  }
+}
+
+.milestone {
+  border-color: var(--color-accent);
+  border-left-color: var(--color-accent);
+
+  .icon {
+    color: var(--color-accent);
+    animation: celebrate $duration-slow * 3 $easing 2;
+  }
+}
+
+.message {
+  flex: 1;
+  min-width: 0;
+  font-weight: $font-weight-medium;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(-$space-4);
+  }
+}
+
+@keyframes celebrate {
+  50% {
+    transform: scale(1.35) rotate(18deg);
+  }
+}
+
+// globals.scss already shortens animations; also skip the celebratory motion entirely.
+@include reduced-motion {
+  .toast,
+  .milestone .icon {
+    animation: none;
+  }
+}

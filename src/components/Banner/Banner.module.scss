@@ -1,0 +1,62 @@
+@use 'styles/tools' as *;
+
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  border: $border-width solid var(--color-border-subtle);
+  border-left-width: $space-1;
+  border-radius: $radius-md;
+  background: var(--color-surface-raised);
+}
+
+.info {
+  border-left-color: var(--color-link);
+}
+
+.success {
+  border-left-color: var(--color-success);
+}
+
+.danger {
+  border-left-color: var(--color-danger);
+
+  .icon {
+    color: var(--color-danger);
+  }
+}
+
+.accent {
+  border-left-color: var(--color-accent);
+
+  .icon {
+    color: var(--color-accent);
+  }
+}
+
+.icon {
+  align-self: flex-start;
+}
+
+.content {
+  flex: 1 1 $text-min-width;
+  min-width: 0;
+}
+
+.title {
+  font-weight: $font-weight-bold;
+}
+
+.text {
+  color: var(--color-text-muted);
+}
+
+.action {
+  flex: 0 0 auto;
+
+  @include below(sm) {
+    flex-basis: 100%;
+  }
+}

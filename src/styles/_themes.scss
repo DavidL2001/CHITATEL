@@ -1,0 +1,73 @@
+@use 'colors' as c;
+
+// Semantic colour tokens. Components only ever reference these custom properties.
+@mixin dark {
+  color-scheme: dark;
+  --color-bg: #{c.$ink-950};
+  --color-surface: #{c.$ink-900};
+  --color-surface-raised: #{c.$ink-850};
+  --color-border-subtle: #{c.$ink-700};
+  --color-border: #{c.$ink-500};
+  --color-text: #{c.$paper-500};
+  --color-text-muted: #{c.$paper-400};
+  --color-link: #{c.$amber-300};
+  --color-accent: #{c.$amber-400};
+  --color-on-accent: #{c.$ink-950};
+  --color-focus: #{c.$blue-300};
+  --color-danger: #{c.$red-300};
+  --color-on-danger: #{c.$ink-950};
+  --color-success: #{c.$green-300};
+  --color-track: #{c.$ink-700};
+  --color-overlay: rgb(0 0 0 / 60%);
+  --color-heat-0: #{c.$ink-850};
+  --color-heat-1: #{c.$amber-900};
+  --color-heat-2: #{c.$amber-700};
+  --color-heat-3: #{c.$amber-650};
+  --color-heat-4: #{c.$amber-500};
+  // Day-number text (and goal marker) on each heat level, all at least 4.5:1.
+  --color-heat-text-0: #{c.$paper-500};
+  --color-heat-text-1: #{c.$paper-500};
+  --color-heat-text-2: #{c.$paper-500};
+  --color-heat-text-3: #{c.$ink-950};
+  --color-heat-text-4: #{c.$ink-950};
+}
+
+@mixin light {
+  color-scheme: light;
+  --color-bg: #{c.$paper-100};
+  --color-surface: #{c.$paper-50};
+  --color-surface-raised: #{c.$paper-200};
+  --color-border-subtle: #{c.$paper-300};
+  --color-border: #{c.$ink-400};
+  --color-text: #{c.$ink-800};
+  --color-text-muted: #{c.$ink-600};
+  --color-link: #{c.$amber-800};
+  --color-accent: #{c.$amber-800};
+  --color-on-accent: #{c.$paper-50};
+  --color-focus: #{c.$blue-700};
+  --color-danger: #{c.$red-700};
+  --color-on-danger: #{c.$paper-50};
+  --color-success: #{c.$green-700};
+  --color-track: #{c.$paper-300};
+  --color-overlay: rgb(36 30 25 / 45%);
+  --color-heat-0: #{c.$paper-200};
+  --color-heat-1: #{c.$amber-100};
+  --color-heat-2: #{c.$amber-200};
+  --color-heat-3: #{c.$amber-600};
+  --color-heat-4: #{c.$amber-800};
+  --color-heat-text-0: #{c.$ink-800};
+  --color-heat-text-1: #{c.$ink-800};
+  --color-heat-text-2: #{c.$ink-800};
+  --color-heat-text-3: #{c.$ink-800};
+  --color-heat-text-4: #{c.$paper-50};
+}
+
+// Dark is the default; the html element carries data-theme.
+:root,
+[data-theme='dark'] {
+  @include dark;
+}
+
+[data-theme='light'] {
+  @include light;
+}

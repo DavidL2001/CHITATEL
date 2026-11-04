@@ -1,0 +1,242 @@
+@use 'styles/tools' as *;
+
+// Heat levels: background plus a matching high-contrast text colour per level.
+@for $i from 0 through 4 {
+  .level#{$i} {
+    background: var(--color-heat-#{$i});
+    color: var(--color-heat-text-#{$i});
+  }
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: $border-width solid var(--color-border-subtle);
+  border-radius: $radius-sm;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+
+  &:focus-visible {
+    z-index: 1;
+  }
+}
+
+.future {
+  border-style: dashed;
+  background: transparent;
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.today {
+  border: $border-width-strong solid var(--color-text);
+}
+
+.selected {
+  outline: $border-width-strong solid var(--color-accent);
+  outline-offset: $border-width;
+}
+
+// The goal-met marker is a shape (dot), so it doesn't rely on colour.
+.marker {
+  position: absolute;
+  top: 12%;
+  right: 12%;
+  width: max(#{$space-1}, 22%);
+  aspect-ratio: 1;
+  border-radius: $radius-pill;
+  background: currentcolor;
+}
+
+// Month view (phones)
+.month,
+.year {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.monthNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2;
+}
+
+.monthTitle {
+  font-size: $font-size-xl;
+  text-align: center;
+}
+
+.navPlaceholder {
+  width: $tap-target;
+}
+
+.monthGrid {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: $border-width-strong;
+}
+
+// On phones the calendar card gives its horizontal padding to the day cells, so seven
+// columns get as close to 48px wide as the screen allows (48px+ from 375px up).
+.calendarCard {
+  @include below(md) {
+    padding-inline: 0;
+
+    .monthNav,
+    .legend {
+      padding-inline: $space-3;
+    }
+  }
+}
+
+.weekday {
+  @include muted-text;
+  font-weight: $font-weight-medium;
+
+  abbr {
+    text-decoration: none;
+  }
+}
+
+.monthCell {
+  height: $tap-target;
+  padding: 0;
+}
+
+// Year heatmap (wide screens)
+.help {
+  @include muted-text;
+}
+
+.yearGrid {
+  display: flex;
+  flex-direction: column;
+  gap: $border-width-strong;
+}
+
+// Each row is its own grid with one column per week (--weeks is set inline).
+.yearRow {
+  display: grid;
+  grid-template-columns: $space-8 repeat(var(--weeks), minmax(0, 1fr));
+  gap: $border-width-strong;
+  align-items: center;
+}
+
+.monthLabel {
+  @include muted-text($font-size-xs);
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.rowLabel {
+  @include muted-text($font-size-xs);
+}
+
+.yearCell {
+  display: block;
+  aspect-ratio: 1;
+
+  .cell {
+    border-radius: $border-width-strong;
+  }
+
+  .marker {
+    top: 25%;
+    right: 25%;
+    width: 50%;
+  }
+}
+
+// Legend
+.legendList {
+  @include reset-list;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2 $space-4;
+}
+
+.legendItem {
+  @include muted-text;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.swatch {
+  position: relative;
+  display: inline-block;
+  width: $space-5;
+  height: $space-5;
+  border: $border-width solid var(--color-border);
+  border-radius: $radius-sm;
+
+  .marker {
+    top: 25%;
+    right: 25%;
+    width: 50%;
+    background: var(--color-heat-text-0);
+  }
+}
+
+// Mini calendar (Today page)
+.mini {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $space-3;
+}
+
+.miniGrid {
+  align-self: stretch;
+}
+
+.miniGrid {
+  @include reset-list;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: $space-1;
+}
+
+.miniCell {
+  position: relative;
+  aspect-ratio: 1;
+  max-height: $tap-target;
+  border: $border-width solid var(--color-border-subtle);
+  border-radius: $radius-sm;
+}
+
+// Day panel
+.dayPanel {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.dayTitle {
+  font-size: $font-size-xl;
+}
+
+.daySummary {
+  @include muted-text($font-size-md);
+  margin-top: $space-1;
+}
+
+// Layout switch: month view below md, year heatmap from md.
+.phoneOnly {
+  @include mq(md) {
+    display: none;
+  }
+}
+
+.wideOnly {
+  @include below(md) {
+    display: none;
+  }
+}

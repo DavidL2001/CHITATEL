@@ -1,0 +1,68 @@
+@use 'styles/tools' as *;
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.list {
+  @include reset-list;
+  display: flex;
+  gap: $space-1;
+  overflow-x: auto;
+  padding: $space-1;
+  border-radius: $radius-md;
+  background: var(--color-surface-raised);
+  // Lets the row scroll on its own at 320px without scrolling the page.
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.linkItem {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.tab {
+  @include tap-target;
+  display: inline-flex;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-2 $space-3;
+  border: $border-width-strong solid transparent;
+  border-radius: $radius-sm;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-text);
+  }
+
+  &:focus-visible {
+    outline-offset: -$focus-ring-width;
+  }
+
+  &[aria-selected='true'],
+  &[aria-current='page'] {
+    border-color: var(--color-accent);
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+}
+
+.panel {
+  min-width: 0;
+
+  &:focus-visible {
+    @include focus-ring;
+    border-radius: $radius-sm;
+  }
+}

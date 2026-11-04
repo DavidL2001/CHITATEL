@@ -1,0 +1,45 @@
+// Raw palette. This is the only file in the project that may contain hex values.
+// Components never use these directly; they use the semantic theme variables in _themes.scss.
+
+// Ink: warm near-blacks and browns
+$ink-950: #15120f;
+$ink-900: #1f1a16;
+$ink-850: #2a241f;
+$ink-800: #241e19;
+$ink-700: #3a322b;
+$ink-600: #5c5046;
+$ink-500: #8a7c6c;
+$ink-400: #8a7a68;
+
+// Paper: creams
+$paper-50: #fffdf9;
+$paper-100: #f7f2ea;
+$paper-200: #efe7da;
+$paper-300: #ddd2c2;
+$paper-400: #bfb3a3;
+$paper-500: #f4eee4;
+
+// Amber: the accent
+$amber-100: #f3dcb4;
+$amber-200: #e2b46c;
+$amber-300: #f0c27a;
+$amber-400: #e8a951;
+$amber-500: #f0b860;
+$amber-600: #c27f2a;
+$amber-650: #b8843a;
+$amber-700: #7a5a2a;
+$amber-800: #8a4f12;
+$amber-900: #4f3d24;
+
+// Feedback
+$red-300: #f4a092;
+$red-700: #b3261e;
+$green-300: #8fd19e;
+$green-700: #276b2b;
+$blue-300: #8ec5ff;
+$blue-700: #1f5fbf;
+
+// Used by the PWA manifest and generated icons. Mirrored in src/constants/brand.ts
+// (which cannot read SCSS) and kept in sync by src/constants/brand.test.ts.
+$brand-background: #15120f;
+$brand-accent: #e8a951;

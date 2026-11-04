@@ -1,0 +1,22 @@
+@use 'styles/tools' as *;
+
+.main {
+  @include safe-area(padding, top);
+  min-height: 100dvh;
+}
+
+.withNav {
+  --nav-offset: calc(#{$bottom-nav-height} + env(safe-area-inset-bottom, 0px));
+
+  .main {
+    padding-bottom: var(--nav-offset);
+  }
+}
+
+.noNav {
+  --nav-offset: 0px;
+
+  .main {
+    @include safe-area(padding, bottom);
+  }
+}

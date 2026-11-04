@@ -1,0 +1,29 @@
+@use 'styles/tools' as *;
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-8 $space-4;
+  border: $border-width dashed var(--color-border);
+  border-radius: $radius-lg;
+  text-align: center;
+}
+
+.icon {
+  color: var(--color-accent);
+}
+
+.title {
+  font-size: $font-size-lg;
+}
+
+.text {
+  @include muted-text($font-size-md);
+  max-width: 32ch;
+}
+
+.action {
+  margin-top: $space-2;
+}

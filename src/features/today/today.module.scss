@@ -1,0 +1,93 @@
+@use 'styles/tools' as *;
+
+.cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-4;
+
+  @include mq(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.cardHeading {
+  font-size: $font-size-lg;
+}
+
+.muted {
+  @include muted-text;
+}
+
+.streak {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.streakNumbers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: $space-2;
+}
+
+.streakCurrent {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.flame {
+  color: var(--color-accent);
+}
+
+.bigNumber {
+  font-family: $font-heading;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  line-height: 1;
+}
+
+.unit {
+  font-size: $font-size-lg;
+}
+
+.atRisk {
+  padding: $space-2 $space-3;
+  border-left: $space-1 solid var(--color-accent);
+  border-radius: $radius-sm;
+  background: var(--color-surface-raised);
+  font-weight: $font-weight-medium;
+}
+
+.goal {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.goalText {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  min-width: 0;
+}
+
+.ringValue {
+  font-family: $font-heading;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+}
+
+.yearGoal {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.primaryActions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}

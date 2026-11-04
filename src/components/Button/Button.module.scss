@@ -1,0 +1,94 @@
+@use 'styles/tools' as *;
+
+.button {
+  @include tap-target;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-3 $space-5;
+  border: $border-width-strong solid transparent;
+  border-radius: $radius-md;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color $duration-fast $easing,
+    border-color $duration-fast $easing,
+    filter $duration-fast $easing;
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &[aria-busy='true'] {
+    cursor: progress;
+  }
+}
+
+.primary {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.08);
+  }
+}
+
+.secondary {
+  background: var(--color-surface-raised);
+  border-color: var(--color-border);
+  color: var(--color-text);
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-text-muted);
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-link);
+
+  &:hover:not(:disabled) {
+    background: var(--color-surface-raised);
+  }
+}
+
+.danger {
+  background: var(--color-danger);
+  color: var(--color-on-danger);
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.08);
+  }
+}
+
+.dangerGhost {
+  background: transparent;
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+
+  &:hover:not(:disabled) {
+    background: var(--color-surface-raised);
+  }
+}
+
+.md {
+  min-height: $tap-target;
+}
+
+.lg {
+  min-height: $tap-target-lg;
+  padding-inline: $space-6;
+  font-size: $font-size-lg;
+}
+
+.full {
+  width: 100%;
+}

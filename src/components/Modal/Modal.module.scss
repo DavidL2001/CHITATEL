@@ -1,0 +1,80 @@
+@use 'styles/tools' as *;
+
+.dialog {
+  width: 100%;
+  max-width: $modal-max;
+  max-height: 100dvh;
+  margin: auto auto 0;
+  padding: 0;
+  border: $border-width solid var(--color-border-subtle);
+  border-radius: $radius-lg $radius-lg 0 0;
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: $shadow-lg;
+
+  &::backdrop {
+    background: var(--color-overlay);
+  }
+
+  &[open] {
+    animation: slide-up $duration-base $easing;
+  }
+
+  @include mq(sm) {
+    width: calc(100% - #{$space-8});
+    max-height: calc(100dvh - #{$space-8});
+    margin: auto;
+    border-radius: $radius-lg;
+  }
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  max-height: inherit;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+  padding: $space-3 $space-3 $space-2 $space-5;
+}
+
+.title {
+  min-width: 0;
+  font-size: $font-size-xl;
+}
+
+.body {
+  overflow-y: auto;
+  padding: $space-2 $space-5 $space-5;
+  overscroll-behavior: contain;
+}
+
+.footer {
+  @include safe-area(padding, bottom, $space-4);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: $space-3;
+  padding-top: $space-4;
+  padding-inline: $space-5;
+  border-top: $border-width solid var(--color-border-subtle);
+
+  > * {
+    flex: 1 1 auto;
+
+    @include mq(sm) {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY($space-6);
+  }
+}

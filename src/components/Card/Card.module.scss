@@ -1,0 +1,37 @@
+@use 'styles/tools' as *;
+
+.card {
+  @include card-surface;
+  min-width: 0;
+}
+
+.none {
+  padding: 0;
+  overflow: hidden;
+}
+
+.md {
+  padding: $space-4;
+}
+
+.lg {
+  padding: $space-4;
+
+  @include mq(sm) {
+    padding: $space-6;
+  }
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+  min-width: 0;
+  margin-bottom: $space-3;
+}
+
+.sectionTitle {
+  min-width: 0;
+  font-size: $font-size-lg;
+}

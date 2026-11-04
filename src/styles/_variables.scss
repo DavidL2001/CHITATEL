@@ -1,0 +1,92 @@
+// Design tokens (compile-time). The few that JavaScript (charts) needs at runtime are
+// also exposed as custom properties in globals.scss.
+
+// Spacing (4px base)
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-16: 4rem;
+
+// Typography
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem; // inputs never go below this (prevents iOS zoom)
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.375rem;
+$font-size-2xl: 1.75rem;
+$font-size-3xl: 2.25rem;
+$font-size-timer: 3.5rem;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.2;
+$line-height-base: 1.55;
+
+$font-body:
+  var(--font-sans),
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  sans-serif;
+$font-heading: var(--font-serif), Georgia, 'Times New Roman', serif;
+
+// Shape
+$radius-sm: 0.375rem;
+$radius-md: 0.625rem;
+$radius-lg: 1rem;
+$radius-pill: 999px;
+
+$border-width: 1px;
+$border-width-strong: 2px;
+$focus-ring-width: 3px;
+$focus-ring-offset: 2px;
+
+$shadow-sm: 0 1px 2px rgb(0 0 0 / 20%);
+$shadow-md: 0 4px 16px rgb(0 0 0 / 25%);
+$shadow-lg: 0 12px 40px rgb(0 0 0 / 35%);
+
+// Layering
+$z-sticky: 10;
+$z-nav: 20;
+$z-toast: 40;
+
+// Layout
+$tap-target: 48px;
+$tap-target-lg: 56px;
+$choice-min-width: 7rem;
+$control-min-width: 10rem;
+$text-min-width: 12rem;
+$content-max: 720px;
+$content-wide-max: 1120px;
+$bottom-nav-height: 64px;
+$action-bar-height: 80px;
+$cover-sm: 48px;
+$cover-md: 72px;
+$cover-lg: 120px;
+$chart-height: 260px;
+$ring-size: 120px;
+$ring-stroke: 10px;
+$heat-cell-min: 40px;
+$modal-max: 560px;
+$toast-max: 420px;
+
+// Breakpoints (min-width, mobile first)
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+);
+
+// Motion
+$duration-fast: 120ms;
+$duration-base: 200ms;
+$duration-slow: 400ms;
+$easing: cubic-bezier(0.2, 0, 0, 1);

@@ -1,0 +1,8 @@
+@use 'styles/tools' as *;
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  color: var(--color-text-muted);
+}

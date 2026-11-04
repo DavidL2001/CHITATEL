@@ -1,0 +1,35 @@
+@use 'styles/tools' as *;
+
+.iconButton {
+  @include tap-target;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: $border-width solid transparent;
+  border-radius: $radius-pill;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color $duration-fast $easing;
+
+  &:hover:not(:disabled) {
+    background: var(--color-surface-raised);
+    border-color: var(--color-border-subtle);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.default {
+  color: var(--color-text);
+}
+
+.danger {
+  color: var(--color-danger);
+}

@@ -1,0 +1,82 @@
+@use 'styles/tools' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  min-width: 0;
+}
+
+.label {
+  font-weight: $font-weight-medium;
+}
+
+.hint {
+  @include muted-text;
+}
+
+.error {
+  color: var(--color-danger);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
+.control {
+  @include tap-target;
+  width: 100%;
+  min-width: 0;
+  padding: $space-3 $space-4;
+  border: $border-width solid var(--color-border);
+  border-radius: $radius-md;
+  background: var(--color-surface);
+  color: var(--color-text);
+  // Never below 16px so iOS doesn't zoom on focus.
+  font-size: $font-size-md;
+  line-height: $line-height-base;
+
+  &::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+    border-color: var(--color-focus);
+  }
+
+  &[aria-invalid='true'] {
+    border-color: var(--color-danger);
+    border-width: $border-width-strong;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.textarea {
+  min-height: calc(#{$tap-target} * 2.5);
+  resize: vertical;
+}
+
+.select {
+  appearance: none;
+  padding-right: $space-10;
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentcolor 50%),
+    linear-gradient(135deg, currentcolor 50%, transparent 50%);
+  background-position:
+    calc(100% - #{$space-5}) 50%,
+    calc(100% - #{$space-4}) 50%;
+  background-size: $space-1 * 1.5 $space-1 * 1.5;
+  background-repeat: no-repeat;
+}
+
+.counter {
+  @include muted-text($font-size-xs);
+  align-self: flex-end;
+}
+
+.counterOver {
+  color: var(--color-danger);
+}
